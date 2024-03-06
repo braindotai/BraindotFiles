@@ -16,12 +16,23 @@ backup_existing_files() {
     done
 }
 
-# Install zsh if not installed
-if ! command_exists zsh; then
-    echo "Installing Zsh..."
-    sudo apt-get update > /dev/null 2>&1
-    sudo apt-get install -y zsh > /dev/null 2>&1
-    sudo chsh -s "$(command -v zsh)"
+# Install zsh based on the distribution
+if [ "$OS" == "ubuntu" ]; then
+    if ! command_exists zsh; then
+        echo "Installing Zsh..."
+        sudo apt-get update > /dev/null 2>&1
+        sudo apt-get install -y zsh > /dev/null 2>&1
+        sudo chsh -s "$(command -v zsh)" "$USER"
+    fi
+elif [ "$OS" == "arch" ]; then
+    if ! command_exists zsh; then
+        echo "Installing Zsh..."
+        sudo pacman -Sy --noconfirm zsh > /dev/null 2>&1
+        sudo chsh -s "$(command -v zsh)" "$USER"
+    fi
+else
+    echo "Unsupported distribution. Please install Zsh manually."
+    exit 1
 fi
 
 # Install Oh My Zsh if not installed
