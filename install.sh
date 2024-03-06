@@ -5,11 +5,22 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
+# Function to backup existing files by renaming them to .bak
+backup_existing_files() {
+    local file
+    for file in "$@"; do
+        if [ -e "$file" ]; then
+            mv "$file" "$file.bak"
+            echo "Backed up existing file: $file to $file.bak"
+        fi
+    done
+}
+
 # Install zsh if not installed
 if ! command_exists zsh; then
-    sudo apt-get update
-    sudo apt-get install -y zsh
-    chsh -s $(which zsh)
+    sudo apt-get update > /dev/null
+    sudo apt-get install -y zsh > /dev/null
+    chsh -s "$(command -v zsh)"
 fi
 
 # Install Oh My Zsh if not installed
@@ -17,24 +28,27 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
     wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O - | zsh || true
 fi
 
+# Backup existing files before installing Powerlevel10k theme and plugins
+backup_existing_files "$HOME/.zshrc" "$HOME/.p10k.zsh" "$HOME/.config/kitty"
+
 # Install Powerlevel10k theme if not installed
 if [ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ]; then
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"  > /dev/null
 fi
 
 # Install zsh-autosuggestions if not installed
 if [ ! -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" ]; then
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" > /dev/null
 fi
 
 # Install zsh-syntax-highlighting if not installed
 if [ ! -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" ]; then
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"  > /dev/null
 fi
 
 # Install zsh-autocomplete if not installed
 if [ ! -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autocomplete" ]; then
-    git clone https://github.com/marlonrichert/zsh-autocomplete.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autocomplete
+    git clone https://github.com/marlonrichert/zsh-autocomplete.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autocomplete"  > /dev/null
 fi
 
 # Store the current working directory
@@ -50,12 +64,12 @@ else
 fi
 
 # Install stow if not already installed
-if ! command -v stow &> /dev/null; then
+if ! command_exists stow; then
     echo "stow is not installed. Installing..."
     case "$OS" in
         ubuntu)
-            sudo apt-get update
-            sudo apt-get install -y stow
+            sudo apt-get update > /dev/null
+            sudo apt-get install -y stow 
             ;;
         arch)
             sudo pacman -Sy --noconfirm stow
