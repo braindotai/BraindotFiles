@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Store the current working directory
+ORIGINAL_DIR=$(pwd)
+
 # Determine the distribution
 if [ -f /etc/os-release ]; then
     . /etc/os-release
@@ -29,11 +32,21 @@ fi
 
 # Clone the BraindotFiles repository
 git clone https://github.com/braindotai/BraindotFiles ~/BraindotFiles
+
 # Create the ~/.local/share/fonts directory if it doesn't exist
 mkdir -p ~/.local/share/fonts
+
 # Copy all .ttf fonts from the BraindotFiles repository to ~/.local/share/fonts
 cp ~/BraindotFiles/fonts/*.ttf ~/.local/share/fonts/
+
 # Rebuild the font cache
 fc-cache -f -v
+
+# Change the current working directory to the BraindotFiles repository
+cd ~/BraindotFiles
+
 # Use stow to create symbolic links from the BraindotFiles repository
-stow ~/BraindotFiles
+stow .
+
+# Move back to the original directory
+cd "$ORIGINAL_DIR"
