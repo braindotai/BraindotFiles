@@ -1,9 +1,7 @@
 # __BraindotFiles__
 
+Just run:
 
-## Setup
-
-Install `stow` as per your distirbution then run
 ```
-make install
+bash <(curl -s https://raw.githubusercontent.com/braindotai/BraindotFiles/main/install.sh)
 ```
