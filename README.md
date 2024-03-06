@@ -1,11 +1,16 @@
-# __@braindotai dots__
+# __BraindotFiles__
 
+
+## Setup
+
+Install `stow` as per your distirbution then run
+```
+make install
+```
 
 - fonts
 ```
-mkdir -p ~/.local/share/fonts
-cp fonts/*ttf ~/.local/share/fonts/
-fc-cache -f -v
+
 ```
 
 - zsh and p10k
