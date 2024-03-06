@@ -57,6 +57,12 @@ if [ ! -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autocomplete" ]; then
     git clone https://github.com/marlonrichert/zsh-autocomplete.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autocomplete"  > /dev/null 2>&1
 fi
 
+# Install Kitty terminal if not installed
+if ! command_exists kitty; then
+    echo "Installing Kitty terminal..."
+    curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+fi
+
 # Store the current working directory
 ORIGINAL_DIR=$(pwd)
 
