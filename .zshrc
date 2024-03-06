@@ -144,8 +144,9 @@ source <(ng completion script)
 zstyle ':autocomplete:history-search-backward:*' list-lines 16
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-source /home/braindotai/Desktop/Packages/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/braindotai/Desktop/Packages/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
+source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 eval $(thefuck --alias)
 
