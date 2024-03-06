@@ -16,6 +16,15 @@ backup_existing_files() {
     done
 }
 
+# Determine the distribution
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    OS=$ID
+else
+    echo "Unable to determine the distribution. Assuming Arch Linux."
+    OS="arch"
+fi
+
 # Install zsh based on the distribution
 if [ "$OS" == "ubuntu" ]; then
     if ! command_exists zsh; then
@@ -85,15 +94,6 @@ fi
 
 # Store the current working directory
 ORIGINAL_DIR=$(pwd)
-
-# Determine the distribution
-if [ -f /etc/os-release ]; then
-    . /etc/os-release
-    OS=$ID
-else
-    echo "Unable to determine the distribution. Assuming Arch Linux."
-    OS="arch"
-fi
 
 # Install stow if not already installed
 if ! command_exists stow; then
