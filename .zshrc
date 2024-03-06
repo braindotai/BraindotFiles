@@ -131,7 +131,7 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)
+# source <(ng completion script)
 
 # bindkey -M menuselect '\r' .accept-line
 # zstyle ':autocomplete:*' list-lines 16
@@ -148,7 +148,7 @@ zstyle ':autocomplete:history-search-backward:*' list-lines 16
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
-eval $(thefuck --alias)
+# eval $(thefuck --alias)
 
 wrapper(){
     start=$(date +%s)

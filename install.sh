@@ -21,7 +21,7 @@ if ! command_exists zsh; then
     echo "Installing Zsh..."
     sudo apt-get update > /dev/null 2>&1
     sudo apt-get install -y zsh > /dev/null 2>&1
-    chsh -s "$(command -v zsh)"
+    sudo chsh -s "$(command -v zsh)"
 fi
 
 # Install Oh My Zsh if not installed
