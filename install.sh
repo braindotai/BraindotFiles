@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Clone the BraindotFiles repository
-echo "🚀 [========= Initializing BraindotFiles =========] 🚀"
+echo "\n🚀 [========= Initializing BraindotFiles =========] 🚀"
 
 # Store the current working directory
 ORIGINAL_DIR=$(pwd)
@@ -88,6 +88,6 @@ bash python.sh
 bash docker.sh
 
 cd "$ORIGINAL_DIR"
-stow .
+stow . > /dev/null 2>&1
 
-echo "🚀 [========== Welcome to 🧠 Braindotai ==========] 🚀"
+echo "\n🚀 [========== Welcome to 🧠 Braindotai ==========] 🚀"

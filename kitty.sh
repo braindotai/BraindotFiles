@@ -18,7 +18,8 @@ if ! command_exists kitty; then
     echo "🐈 Installing kitty 🐈"
     case "$OS" in
         ubuntu)
-            curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh > /dev/null 2>&1
+            # curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh > /dev/null 2>&1
+            curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/null 2>&1
             mkdir -p ~/.local/bin/
             ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten ~/.local/bin/
             # Place the kitty.desktop file somewhere it can be found by the OS
