@@ -15,7 +15,7 @@ command_exists() {
 
 # Install Kitty terminal if not installed
 if ! command_exists kitty; then
-    echo "Installing kitty..."
+    echo "🐈 Installing kitty 🐈"
     case "$OS" in
         ubuntu)
             curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh > /dev/null 2>&1

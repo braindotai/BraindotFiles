@@ -20,14 +20,14 @@ command_exists() {
 
 case "$OS" in
     ubuntu)
-        echo 'Updating your Ubuntu...'
+        echo '🟢 Updating Ubuntu 🟢'
         sudo apt update -y  > /dev/null 2>&1
         sudo apt upgrade -y  > /dev/null 2>&1
         sudo apt install curl -y  > /dev/null 2>&1
         sudo apt autoremove -y  > /dev/null 2>&1
         ;;
     arch)
-        echo 'Updating your Arch'
+        echo '🟢 Updating your Arch 🟢'
         sudo pacman -Syyuu
         sudo pacman -Sy --noconfirm curl > /dev/null 2>&1
         sudo pacman -Scc --noconfirm > /dev/null 2>&1
@@ -41,7 +41,7 @@ esac
 
 # Install git if not already installed``
 if ! command_exists git; then
-    echo "Installing git..."
+    echo "🐼 Installing git 🐼"
     case "$OS" in
         ubuntu)
             sudo apt install -y git > /dev/null 2>&1
@@ -60,7 +60,7 @@ git clone https://github.com/braindotai/BraindotFiles ~/BraindotFiles > /dev/nul
 
 # Install stow if not already installed``
 if ! command_exists stow; then
-    echo "Installing stow..."
+    echo "🐃 Installing stow 🐃"
     case "$OS" in
         ubuntu)
             sudo apt install -y stow > /dev/null 2>&1
