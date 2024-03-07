@@ -1,8 +1,8 @@
 #!/bin/bash
 
-bash zsh.sh
-bash kitty.sh
-bash python.sh
+# Clone the BraindotFiles repository
+echo "Initializing BraindotFiles..."
+git clone https://github.com/braindotai/BraindotFiles ~/BraindotFiles > /dev/null 2>&1
 
 # Store the current working directory
 ORIGINAL_DIR=$(pwd)
@@ -25,26 +25,15 @@ if ! command_exists stow; then
     esac
 fi
 
-# Clone the BraindotFiles repository
-echo "Setting up BraindotFiles..."
-git clone https://github.com/braindotai/BraindotFiles ~/BraindotFiles > /dev/null 2>&1
-
 # Create the ~/.local/share/fonts directory if it doesn't exist
+echo 'Instaling fonts...'
 mkdir -p ~/.local/share/fonts
-
-# Copy all .ttf fonts from the BraindotFiles repository to ~/.local/share/fonts
 cp ~/BraindotFiles/fonts/*.ttf ~/.local/share/fonts/
-
-# Rebuild the font cache
 fc-cache -f -v > /dev/null 2>&1
-
-# Change the current working directory to the BraindotFiles repository
 cd ~/BraindotFiles
 
-# Use stow to create symbolic links from the BraindotFiles repository
+echo 'Installing...'
 stow .
 
-# Move back to the original directory
 cd "$ORIGINAL_DIR"
-
 echo "Welcome to Braindotai"
