@@ -14,22 +14,22 @@ command_exists() {
 }
 
 if ! command_exists python3.9; then
-    # Install Python 3.9, pip3.9, and venv module
+    echo "Installing python..."
     if [ "$OS" == "arch" ]; then
         # Arch Linux
         sudo pacman -Sy --noconfirm python39 python-pip
         pip3.9 install --upgrade pip
 
     elif [ "$OS" == "ubuntu" ]; then
-        sudo apt-get update
-        sudo apt-get install -y software-properties-common
-        sudo add-apt-repository ppa:deadsnakes/ppa
-        sudo apt-get update
-        sudo apt-get install -y python3.9 python3.9-venv python3.9-distutils
-        sudo wget https://bootstrap.pypa.io/get-pip.py
-        sudo python3.9 get-pip.py
-        sudo rm get-pip.py
-        pip3.9 install --upgrade pip
+        sudo apt-get update  > /dev/null 2>&1
+        sudo apt-get install -y software-properties-common > /dev/null 2>&1
+        sudo add-apt-repository ppa:deadsnakes/ppa > /dev/null 2>&1
+        sudo apt-get update > /dev/null 2>&1
+        sudo apt-get install -y python3.9 python3.9-venv python3.9-distutils > /dev/null 2>&1
+        sudo wget https://bootstrap.pypa.io/get-pip.py > /dev/null 2>&1
+        sudo python3.9 get-pip.py > /dev/null 2>&1
+        sudo rm get-pip.py > /dev/null 2>&1
+        pip3.9 install --upgrade pip > /dev/null 2>&1
     else
         echo "Unsupported distribution."
         exit 1
@@ -37,5 +37,5 @@ if ! command_exists python3.9; then
 fi
 
 echo "Installing python packages..."
-pip3.9 install nvitop opencv-python matplotlib tqdm lightning ipython
-pip3.9 install torch torchvision --index-url https://download.pytorch.org/whl/cu121 --no-cache-dir
+pip3.9 install nvitop opencv-python matplotlib tqdm lightning ipython -q > /dev/null 2>&1
+# pip3.9 install torch torchvision --index-url https://download.pytorch.org/whl/cu121 --no-cache-dir -q

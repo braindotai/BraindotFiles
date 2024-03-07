@@ -15,10 +15,10 @@ command_exists() {
 
 # Install Kitty terminal if not installed
 if ! command_exists kitty; then
+    echo "Installing kitty..."
     case "$OS" in
         ubuntu)
-            echo "Installing Kitty terminal..."
-            curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+            curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin > /dev/null 2>&1
 
             ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten ~/.local/bin/
             # Place the kitty.desktop file somewhere it can be found by the OS

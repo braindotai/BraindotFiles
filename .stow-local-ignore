@@ -3,6 +3,7 @@
 fonts
 .git
 .gitignore
+docker.sh
 install.sh
 kitty.sh
 python.sh

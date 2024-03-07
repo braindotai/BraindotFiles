@@ -18,12 +18,28 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
-# Install stow if not already installed``
+case "$OS" in
+    ubuntu)
+        echo 'Updating your Ubuntu...'
+        sudo apt-get update > /dev/null 2>&1
+        sudo apt-get upgrade > /dev/null 2>&1
+        ;;
+    arch)
+        echo 'Updating your Arch'
+        sudo pacman -Syyuu
+        ;;
+    *)
+        echo "Unsupported distribution. Please update your system manually..."
+        ;;
+esac
+            
+
+
+# Install git if not already installed``
 if ! command_exists git; then
-    echo "`git` is not installed, installing..."
+    echo "Installing git..."
     case "$OS" in
         ubuntu)
-            sudo apt-get update > /dev/null 2>&1
             sudo apt-get install -y git > /dev/null 2>&1
             ;;
         arch)
@@ -40,10 +56,9 @@ git clone https://github.com/braindotai/BraindotFiles ~/BraindotFiles > /dev/nul
 
 # Install stow if not already installed``
 if ! command_exists stow; then
-    echo "`stow` is not installed, installing..."
+    echo "Installing stow..."
     case "$OS" in
         ubuntu)
-            sudo apt-get update > /dev/null 2>&1
             sudo apt-get install -y stow > /dev/null 2>&1
             ;;
         arch)
@@ -66,6 +81,7 @@ cd ~/BraindotFiles
 bash zsh.sh
 bash kitty.sh
 bash python.sh
+bash docker.sh
 
 echo 'Installing...'
 stow .

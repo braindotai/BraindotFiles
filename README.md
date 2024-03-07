@@ -7,7 +7,7 @@
 Just run:
 
 ```
-bash <(curl -s https://raw.githubusercontent.com/braindotai/BraindotFiles/main/install.sh)
+wget -qO- https://raw.githubusercontent.com/braindotai/BraindotFiles/main/install.sh | bash
 ```
 
 **Supported distros:**
