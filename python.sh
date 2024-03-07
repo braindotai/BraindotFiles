@@ -14,7 +14,7 @@ command_exists() {
 }
 
 if ! command_exists python3.9; then
-    echo "Installing python..."
+    echo "🐍 Installing python3.9 🐍"
     if [ "$OS" == "arch" ]; then
         # Arch Linux
         sudo pacman -Sy --noconfirm python39 python-pip
@@ -35,7 +35,6 @@ if ! command_exists python3.9; then
     fi
 fi
 
-# echo "Installing python packages..."
 # pip3.9 install nvitop opencv-python matplotlib tqdm lightning ipython -q > /dev/null 2>&1
 # pip3.9 install torch torchvision --index-url https://download.pytorch.org/whl/cu121 --no-cache-dir -q
 
