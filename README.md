@@ -1,6 +1,6 @@
 # __BraindotFiles__
 
-![alt text](.assets/demo.png)
+![demo](.assets/demo.png)
 
 ## __Installation__
 
@@ -9,6 +9,9 @@ Just run:
 ```
 sudo wget -qO- https://raw.githubusercontent.com/braindotai/BraindotFiles/main/install.sh | bash
 ```
+
+![output](.assets/output.png)
+
 
 **Supported distros:**
 - Arch
