@@ -21,8 +21,8 @@ command_exists() {
 case "$OS" in
     ubuntu)
         echo 'Updating your Ubuntu...'
-        sudo apt-get update > /dev/null 2>&1
-        sudo apt-get upgrade > /dev/null 2>&1
+        sudo apt update > /dev/null 2>&1
+        sudo apt upgrade > /dev/null 2>&1
         sudo apt install curl > /dev/null 2>&1
         sudo apt autoremove > /dev/null 2>&1
         ;;

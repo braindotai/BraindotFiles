@@ -43,8 +43,7 @@ fi
 # Install Oh My Zsh if not installed
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "Installing oh my zsh..."
-    # wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O - | zsh || true  > /dev/null 2>&1
-    (wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O - | zsh || true) > /dev/null 2>&1 &
+    wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O - | zsh || true  > /dev/null 2>&1
 fi
 
 # Backup existing files before installing Powerlevel10k themernd plugins
