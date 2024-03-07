@@ -27,7 +27,7 @@ backup_existing_files() {
 if [ "$OS" == "ubuntu" ]; then
     echo "Installing zsh..."
     if ! command_exists zsh; then
-        sudo apt-get install -y zsh > /dev/null 2>&1
+        sudo apt install -y zsh > /dev/null 2>&1
         sudo chsh -s "$(command -v zsh)" "$USER"
     fi
 elif [ "$OS" == "arch" ]; then
