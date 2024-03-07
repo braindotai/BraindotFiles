@@ -1,6 +1,14 @@
 #!/bin/bash
 # Store the current working directory
 ORIGINAL_DIR=$(pwd)
+# Determine the distribution
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    OS=$ID
+else
+    echo "Unable to determine the distribution. Assuming Arch Linux."
+    OS="arch"
+fi
 
 command_exists() {
     command -v "$1" >/dev/null 2>&1
