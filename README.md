@@ -11,8 +11,8 @@ bash <(curl -s https://raw.githubusercontent.com/braindotai/BraindotFiles/main/i
 ```
 
 **Supported distros:**
-    - Arch
-    - Ubuntu
+- Arch
+- Ubuntu
 
 This script installs the following
 

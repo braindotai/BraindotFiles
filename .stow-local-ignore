@@ -1,7 +1,10 @@
-.git
-README.md
-fonts
-.history
-install.sh
-.gitignore
 .assets
+.history
+fonts
+.git
+.gitignore
+install.sh
+kitty.sh
+python.sh
+README.md
+zsh.sh

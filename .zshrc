@@ -91,41 +91,11 @@ plugins=(
   docker
 
   zsh-autosuggestions
-  # zsh-syntax-highlighting
 )
 
-# python aliases
-alias ipy='clear && ipython'
-alias py='clear && python3.9'
-alias pyi='python3.9 -m pip install'
-alias pyinc='python3.9 -m pip install --no-cache-dir'
-alias pyup='python3.9 -m pip install --upgrade'
-alias pyun='python3.9 -m pip uninstall'
-alias pyupip='python3.9 -m pip install --upgrade pip'
-alias pyvenv='source venv/bin/activate'
-
-# kitty aliases
-alias imshow='kitty +kitten icat'
-alias ssh='kitten ssh'
-
-alias open='xdg-open .'
-alias dropcache='echo 3 | sudo tee /proc/sys/vm/drop_caches'
-alias zshreload='source ~/.zshrc'
-
-alias yt-video="yt-dlp -o '~/Videos/YouTube/%(title)s.%(ext)s' "
-alias yt-audio="yt-dlp --extract-audio --audio-format mp3 -o '~/Music/YouTube/%(title)s.%(ext)s' "
-
-
-export PATH=$PATH:/home/braindotai/.local/bin
-export PATH=/opt/cuda/bin:$PATH
-export LD_LIBRARY_PATH=/opt/cuda/lib64:$LD_LIBRARY_PATH
-
+source .aliases.sh
+source .export.sh
 source $ZSH/oh-my-zsh.sh
-
-export PATH="/usr/local/bin:$PATH"
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -147,12 +117,3 @@ zstyle ':autocomplete:history-search-backward:*' list-lines 16
 
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-
-# eval $(thefuck --alias)
-
-wrapper(){
-    start=$(date +%s)
-    $@
-    [ $(($(date +%s) - start)) -le 15 ] || notify-send "Notification" "Job\
- completed \"$(echo $@)\" -> Took $(($(date +%s) - start)) seconds to finish."
-}
