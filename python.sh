@@ -38,3 +38,12 @@ fi
 # echo "Installing python packages..."
 # pip3.9 install nvitop opencv-python matplotlib tqdm lightning ipython -q > /dev/null 2>&1
 # pip3.9 install torch torchvision --index-url https://download.pytorch.org/whl/cu121 --no-cache-dir -q
+
+# assets
+# docker
+# fonts
+# git
+# kitty
+# python
+# vscode
+# zsh
