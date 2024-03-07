@@ -19,7 +19,16 @@ if ! command_exists kitty; then
     case "$OS" in
         ubuntu)
             # curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh > /dev/null 2>&1
-            curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/null 2>&1
+            # curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/null 2>&1
+            installer_script=$(mktemp)
+            curl -L https://sw.kovidgoyal.net/kitty/installer.sh -o "$installer_script" > /dev/null 2>&1
+
+            # Run the installer script silently
+            bash "$installer_script" > /dev/null 2>&1
+
+            # Remove the temporary installer script
+            rm "$installer_script"
+            
             mkdir -p ~/.local/bin/
             ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten ~/.local/bin/
             # Place the kitty.desktop file somewhere it can be found by the OS
