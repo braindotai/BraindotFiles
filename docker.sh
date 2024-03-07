@@ -21,21 +21,20 @@ if ! command_exists docker; then
         pip3.9 install --upgrade pip
 
     elif [ "$OS" == "ubuntu" ]; then
-        for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
         # Add Docker's official GPG key:
-        sudo apt-get install ca-certificates curl > /dev/null
-        sudo install -m 0755 -d /etc/apt/keyrings > /dev/null
-        sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc > /dev/null
-        sudo chmod a+r /etc/apt/keyrings/docker.asc > /dev/null
+        sudo apt-get install ca-certificates curl > /dev/null 2>&1
+        sudo install -m 0755 -d /etc/apt/keyrings > /dev/null 2>&1
+        sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc > /dev/null 2>&1
+        sudo chmod a+r /etc/apt/keyrings/docker.asc > /dev/null 2>&1
 
         # Add the repository to Apt sources:
         echo \
         "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-        $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \  > /dev/null
-        sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-        sudo apt-get update
+        $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \  > /dev/null 2>&1
+        sudo tee /etc/apt/sources.list.d/docker.list > /dev/null 2>&1
+        sudo apt-get update /dev/null 2>&1
 
-        sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+        sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin  /dev/null 2>&1
     else
         echo "Unsupported distribution."
         exit 1
