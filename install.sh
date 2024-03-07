@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Clone the BraindotFiles repository
-echo -e "\n🚀 [========= Initializing BraindotFiles =========] 🚀"
+echo -e "\n🚀 [========= Initializing BraindotFiles =========] 🚀\n"
 
 # Store the current working directory
 ORIGINAL_DIR=$(pwd)
