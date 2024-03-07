@@ -76,7 +76,7 @@ if ! command_exists stow; then
 fi
 
 # Create the ~/.local/share/fonts directory if it doesn't exist
-echo 'Instaling fonts...'
+echo '💠 Instaling fonts 💠'
 mkdir -p ~/.local/share/fonts
 cp ~/BraindotFiles/fonts/*.ttf ~/.local/share/fonts/
 fc-cache -f -v > /dev/null 2>&1
