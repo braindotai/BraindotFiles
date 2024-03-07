@@ -23,12 +23,14 @@ case "$OS" in
         echo 'Updating your Ubuntu...'
         sudo apt-get update > /dev/null 2>&1
         sudo apt-get upgrade > /dev/null 2>&1
-        sudo apt install curl
+        sudo apt install curl > /dev/null 2>&1
+        sudo apt autoremove > /dev/null 2>&1
         ;;
     arch)
         echo 'Updating your Arch'
         sudo pacman -Syyuu
         sudo pacman -Sy --noconfirm curl > /dev/null 2>&1
+        sudo pacman -Scc --noconfirm > /dev/null 2>&1
         ;;
     *)
         echo "Unsupported distribution. Please update your system manually..."
