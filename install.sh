@@ -20,7 +20,7 @@ command_exists() {
 
 case "$OS" in
     ubuntu)
-        echo '🟢 Updating Ubuntu 🟢'
+        echo '\n🟢 Updating Ubuntu 🟢'
         sudo apt update -y  > /dev/null 2>&1
         sudo apt upgrade -y  > /dev/null 2>&1
         sudo apt install curl -y  > /dev/null 2>&1
@@ -82,12 +82,12 @@ cp ~/BraindotFiles/fonts/*.ttf ~/.local/share/fonts/
 fc-cache -f -v > /dev/null 2>&1
 cd ~/BraindotFiles
 
-bash zsh.sh
-bash kitty.sh
-bash python.sh
-bash docker.sh
+bash docker/setup.sh
+bash kitty/setup.sh
+bash python/setup.sh
+bash zsh/setup.sh
 
 stow .
 
 cd "$ORIGINAL_DIR"
-echo "🚀 [========== Welcome to 🧠 Braindotai ==========] 🚀"
+echo "\n🚀 [========== Welcome to 🧠 Braindotai ==========] 🚀"
