@@ -7,7 +7,7 @@
 Just run:
 
 ```
-wget -qO- https://raw.githubusercontent.com/braindotai/BraindotFiles/main/install.sh | bash
+sudo wget -qO- https://raw.githubusercontent.com/braindotai/BraindotFiles/main/install.sh | bash
 ```
 
 **Supported distros:**
