@@ -87,7 +87,7 @@ bash kitty.sh
 bash python.sh
 bash docker.sh
 
+cd "$ORIGINAL_DIR"
 stow .
 
-cd "$ORIGINAL_DIR"
 echo "🚀 [========== Welcome to 🧠 Braindotai ==========] 🚀"
