@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# Clone the BraindotFiles repository
+echo "Initializing BraindotFiles..."
+
 # Store the current working directory
 ORIGINAL_DIR=$(pwd)
 # Determine the distribution
@@ -10,16 +14,13 @@ else
     OS="arch"
 fi
 
-echo "Your distribution is"
-echo "$OS"
-
 command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
 # Install stow if not already installed``
 if ! command_exists git; then
-    echo "git is not installed. Installing..."
+    echo "`git` is not installed, installing..."
     case "$OS" in
         ubuntu)
             sudo apt-get update > /dev/null 2>&1
@@ -35,15 +36,11 @@ if ! command_exists git; then
     esac
 fi
 
-# Clone the BraindotFiles repository
-echo "Initializing BraindotFiles..."
 git clone https://github.com/braindotai/BraindotFiles ~/BraindotFiles > /dev/null 2>&1
-
-
 
 # Install stow if not already installed``
 if ! command_exists stow; then
-    echo "stow is not installed. Installing..."
+    echo "`stow` is not installed, installing..."
     case "$OS" in
         ubuntu)
             sudo apt-get update > /dev/null 2>&1
@@ -66,8 +63,12 @@ cp ~/BraindotFiles/fonts/*.ttf ~/.local/share/fonts/
 fc-cache -f -v > /dev/null 2>&1
 cd ~/BraindotFiles
 
+bash zsh.sh
+bash kitty.sh
+bash python.sh
+
 echo 'Installing...'
 stow .
 
 cd "$ORIGINAL_DIR"
-echo "Welcome to Braindotai"
+echo "Welcome to 🧠 Braindotai"
