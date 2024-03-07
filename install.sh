@@ -1,13 +1,36 @@
 #!/bin/bash
+# Store the current working directory
+ORIGINAL_DIR=$(pwd)
+
+command_exists() {
+    command -v "$1" >/dev/null 2>&1
+}
+
+# Install stow if not already installed``
+if ! command_exists git; then
+    echo "git is not installed. Installing..."
+    case "$OS" in
+        ubuntu)
+            sudo apt-get update > /dev/null 2>&1
+            sudo apt-get install -y git > /dev/null 2>&1
+            ;;
+        arch)
+            sudo pacman -Sy --noconfirm git > /dev/null 2>&1
+            ;;
+        *)
+            echo "Unsupported distribution. Please install git manually."
+            exit 1
+            ;;
+    esac
+fi
 
 # Clone the BraindotFiles repository
 echo "Initializing BraindotFiles..."
 git clone https://github.com/braindotai/BraindotFiles ~/BraindotFiles > /dev/null 2>&1
 
-# Store the current working directory
-ORIGINAL_DIR=$(pwd)
 
-# Install stow if not already installed
+
+# Install stow if not already installed``
 if ! command_exists stow; then
     echo "stow is not installed. Installing..."
     case "$OS" in
