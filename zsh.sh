@@ -18,7 +18,6 @@ backup_existing_files() {
     for file in "$@"; do
         if [ -e "$file" ]; then
             mv "$file" "$file.bak"
-            echo "Backed up existing file: $file to $file.bak"
         fi
     done
 }
@@ -44,7 +43,6 @@ fi
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "🫨  Installing oh my zsh 🫨"
     wget -qO - https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | zsh -s > /dev/null 2>&1
-    # wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O - | zsh || true  > /dev/null 2>&1
 fi
 
 # Backup existing files beforeinstalling Powerlevel10k themernd plugins

@@ -58,7 +58,7 @@ fi
 
 git clone https://github.com/braindotai/BraindotFiles ~/BraindotFiles > /dev/null 2>&1
 
-# Install stow if not already installed``
+# Install stow if not already installed
 if ! command_exists stow; then
     echo "🐃 Installing stow 🐃"
     case "$OS" in
