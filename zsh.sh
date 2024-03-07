@@ -43,16 +43,17 @@ fi
 # Install Oh My Zsh if not installed
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "Installing oh my zsh..."
-    wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O - | zsh || true  > /dev/null 2>&1
+    # wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O - | zsh || true  > /dev/null 2>&1
+    (wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O - | zsh || true) > /dev/null 2>&1 &
 fi
 
-# Backup existing files before installing Powerlevel10k theme and plugins
+# Backup existing files before installing Powerlevel10k themernd plugins
 backup_existing_files "$HOME/.zshrc" "$HOME/.p10k.zsh" "$HOME/.config/kitty"
 
 # Install Powerlevel10k theme if not installed
 if [ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ]; then
     echo "Installing powerlevel10k..."
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"  > /dev/null 2>&1
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" > /dev/null 2>&1
 fi
 
 # Install zsh-autosuggestions if not installed
