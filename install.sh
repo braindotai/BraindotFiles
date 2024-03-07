@@ -21,10 +21,10 @@ command_exists() {
 case "$OS" in
     ubuntu)
         echo 'Updating your Ubuntu...'
-        sudo apt update > /dev/null 2>&1
-        sudo apt upgrade > /dev/null 2>&1
-        sudo apt install curl > /dev/null 2>&1
-        sudo apt autoremove > /dev/null 2>&1
+        sudo apt update -y  > /dev/null 2>&1
+        sudo apt upgrade -y  > /dev/null 2>&1
+        sudo apt install curl -y  > /dev/null 2>&1
+        sudo apt autoremove -y  > /dev/null 2>&1
         ;;
     arch)
         echo 'Updating your Arch'
